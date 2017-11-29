@@ -86,7 +86,7 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
         <div ng-if="openFilters" class="">
             <div layout="row" layout-align="space-between center" class="mb-30">
                 <div layout="row" class="pr-10" layout-align="start center">
-                    <div class="h6">Fecha de salida</div>
+                    <div class="h6">Fecha de salida *</div>
                     <div>
                         <md-datepicker md-min-date="minDate" 
                             ng-model="data.startDate"  
@@ -124,7 +124,7 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
                     <md-input-container class="all-width">
                         <label for="from">Adultos</label>
                         <md-select ng-model="data.adults">
-                            <md-option ng-repeat="passenger in passengers" ng-value="passenger">
+                            <md-option ng-repeat="passenger in passengers" ng-value="passenger" ng-disabled="$index === 0">
                                 {{passenger}}
                             </md-option>
                         </md-select>
