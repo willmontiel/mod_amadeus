@@ -25,6 +25,13 @@
             self.querySearchFrom = querySearch;
             self.selectedFromChange = selectedFromChange;
 
+
+            self.isToDisabled = false;
+            self.isToCached = false;
+            self.selectedTo = null;
+            self.querySearchTo = querySearch;
+            self.selectedToChange = selectedToChange;
+
             function querySearch (query) {
                 var results = query ? self.cities.filter( createFilterFor(query) ) : self.cities;
                 return results;
@@ -44,6 +51,14 @@
                     self.selectedFrom = item;
                 } else {
                     self.selectedFrom = null;
+                }
+            }
+
+            function selectedToChange(item) {
+                if (item) {
+                    self.selectedTo = item;
+                } else {
+                    self.selectedTo = null;
                 }
             }
         }]);

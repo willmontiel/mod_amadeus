@@ -23,7 +23,7 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
  
 <div ng-app="amadeus" ng-controller="ctrlSearchAmadeus as ctrl" ng-cloak> 
     <div layout="row" layout-align="space-between center">
-        <div>
+        <div flex class="pr-10">
             <md-input-container class="all-width">
                 <label for="from">Desde</label>
                 <md-autocomplete
@@ -47,18 +47,34 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
                 <div class="h7 grey-fg">
                     Escribe y selecciona el aeropuerto o ciudad de origen
                 </div>
-
             </md-input-container>
         </div>
         
-        <div>
-            <div class="form-group">
-                <label for="from">Hasta</label>
-                <input type="text" class="form-control" id="to" name="to" placeholder="Aeropuerto o ciudad">
+        <div flex class="pl-10">
+            <md-input-container class="all-width">
+                <label for="to">Hasta</label>
+                <md-autocomplete
+                    ng-disabled="ctrl.isToDisabled"
+                    md-no-cache="ctrl.isToCached"
+                    md-selected-item="ctrl.selectedTo"
+                    md-search-text="ctrl.searchToText"
+                    md-selected-item-change="ctrl.selectedToChange(item)"
+                    md-items="item in ctrl.querySearchTo(ctrl.searchToText)"
+                    md-item-text="item.name"
+                    md-min-length="0"
+                    placeholder="Aeropuerto o ciudad">
+                    <md-item-template>
+                        <span md-highlight-text="ctrl.searchToText" md-highlight-flags="^i">{{item.name}}</span>
+                    </md-item-template>
+                    <md-not-found>
+                        Se encontraron coincidencias con el texto "{{ctrl.searchToText}}"
+                    </md-not-found>
+                </md-autocomplete>
+
                 <div class="h7 grey-fg">
                     Escribe y selecciona el aeropuerto o ciudad de destino
                 </div>
-            </div>
+            </md-input-container>
         </div>
     </div>
 
