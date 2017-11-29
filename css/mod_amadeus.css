@@ -1,0 +1,63 @@
+/* Margins */
+/* 5px */
+.m-5 {
+    margin: 5px;
+}
+
+.mt-5 {
+    margin-top: 5px;
+}
+
+.mr-5 {
+    margin-right: 5px;
+}
+
+.mb-5 {
+    margin-bottom: 5px;
+}
+
+.ml-5 {
+    margin-left: 5px;
+}
+
+/* 8px */
+.m-8 {
+    margin: 8px;
+}
+
+.mt-8 {
+    margin-top: 8px;
+}
+
+.mr-8 {
+    margin-right: 8px;
+}
+
+.mb-8 {
+    margin-bottom: 8px;
+}
+
+.ml-8 {
+    margin-left: 8px;
+}
+
+/* 10px */
+.m-10 {
+    margin: 10px;
+}
+
+.mt-10 {
+    margin-top: 10px;
+}
+
+.mr-10 {
+    margin-right: 10px;
+}
+
+.mb-10 {
+    margin-bottom: 10px;
+}
+
+.ml-10 {
+    margin-left: 10px;
+}
