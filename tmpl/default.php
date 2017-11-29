@@ -22,11 +22,12 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
 ?>
  
 <div id="amadeus-searcher" ng-app="amadeus" ng-controller="ctrlSearchAmadeus as ctrl" ng-cloak> 
-    <form name="searchForm">
+    <div class="background"></div>
+    <form name="searchForm" class="p-10 white-fg">
         <div layout="row" flex="100" layout-align="space-between center">
             <div flex="50" class="pr-10">
                 <md-input-container class="all-width">
-                    <label for="from">Desde</label>
+                    <label for="from" class="white-fg h5">Desde</label>
                     <md-autocomplete
                         ng-disabled="ctrl.isFromDisabled"
                         md-no-cache="ctrl.isFromCached"
@@ -47,7 +48,7 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
                         </md-not-found>
                     </md-autocomplete>
 
-                    <div class="h7 grey-fg">
+                    <div class="h7 white-fg">
                         Escribe y selecciona el aeropuerto o ciudad de origen
                     </div>
                 </md-input-container>
@@ -55,7 +56,7 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
             
             <div flex="50" class="pl-10">
                 <md-input-container class="all-width">
-                    <label for="to">Hasta</label>
+                    <label for="to" class="white-fg h5">Hasta</label>
                     <md-autocomplete
                         ng-disabled="ctrl.isToDisabled"
                         md-no-cache="ctrl.isToCached"
@@ -76,7 +77,7 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
                         </md-not-found>
                     </md-autocomplete>
 
-                    <div class="h7 grey-fg">
+                    <div class="h7 white-fg">
                         Escribe y selecciona el aeropuerto o ciudad de destino
                     </div>
                 </md-input-container>
@@ -86,7 +87,7 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
         <div ng-if="openFilters" class="">
             <div layout="row" layout-align="space-between center" class="mb-30">
                 <div layout="row" class="pr-10" layout-align="start center">
-                    <div class="h6">Fecha de salida *</div>
+                    <div class="white-fg z-index-10 h6">Fecha de salida *</div>
                     <div>
                         <md-datepicker md-min-date="minDate" 
                             ng-model="data.startDate"  
@@ -99,7 +100,7 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
                 </div>
 
                 <div ng-if="data.route == 1" layout="row" class="pr-10" layout-align="start center">
-                    <div class="h6">Fecha de regreso</div>
+                    <div class="white-fg z-index-10 h6">Fecha de regreso</div>
                     <div>
                         <md-datepicker md-min-date="data.startDate" 
                             ng-disabled="!data.startDate" 
@@ -122,7 +123,7 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
                 
                 <div flex="auto" class="pr-10">
                     <md-input-container class="all-width">
-                        <label for="from">Adultos</label>
+                        <label for="from" class="white-fg h5">Adultos</label>
                         <md-select ng-model="data.adults">
                             <md-option ng-repeat="passenger in passengers" ng-value="passenger" ng-disabled="$index === 0">
                                 {{passenger}}
@@ -133,7 +134,7 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
 
                 <div flex="auto" class="pl-10 pr-10">
                     <md-input-container class="all-width">
-                        <label for="from">Niños (2-11)</label>
+                        <label for="from" class="white-fg h5">Niños (2-11)</label>
                         <md-select ng-model="data.childs">
                             <md-option ng-repeat="passenger in passengers" ng-value="passenger">
                                 {{passenger}}
@@ -144,7 +145,7 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
 
                 <div flex="auto" class="pl-10">
                     <md-input-container class="all-width">
-                        <label for="from">Infantes (0-2)</label>
+                        <label for="from" class="white-fg h5">Infantes (0-2)</label>
                         <md-select ng-model="data.infants">
                             <md-option ng-repeat="passenger in passengers" ng-value="passenger">
                                 {{passenger}}
