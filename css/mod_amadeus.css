@@ -230,3 +230,7 @@
 .white-fg {
     color: white !important
 }
+
+.text-bold {
+    font-weight: bold;
+}

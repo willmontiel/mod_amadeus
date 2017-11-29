@@ -27,7 +27,7 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
         <div layout="row" flex="100" layout-align="space-between center">
             <div flex="50" class="pr-10">
                 <md-input-container class="all-width">
-                    <label for="from" class="white-fg h5">Desde</label>
+                    <label for="from" class="white-fg h3 text-bold">Desde</label>
                     <md-autocomplete
                         ng-disabled="ctrl.isFromDisabled"
                         md-no-cache="ctrl.isFromCached"
@@ -56,7 +56,7 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
             
             <div flex="50" class="pl-10">
                 <md-input-container class="all-width">
-                    <label for="to" class="white-fg h5">Hasta</label>
+                    <label for="to" class="white-fg h3 text-bold">Hasta</label>
                     <md-autocomplete
                         ng-disabled="ctrl.isToDisabled"
                         md-no-cache="ctrl.isToCached"
