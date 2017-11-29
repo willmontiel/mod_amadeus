@@ -24,6 +24,13 @@
                     description: 'E. Cortissoz'
                 }
             ];
+
+            $scope.passengers = [];
+
+            for (var i = 1; i < 10; i++) {
+                $scope.passengers.push(i);
+            }
+
             self.querySearchFrom = querySearch;
             self.selectedFromChange = selectedFromChange;
 
