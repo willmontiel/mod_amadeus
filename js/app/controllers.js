@@ -72,5 +72,13 @@
                     self.selectedTo = null;
                 }
             }
+
+            $scope.validate = function() {
+
+            }
+
+            $scope.search = function() {
+                
+            }
         }]);
 })();

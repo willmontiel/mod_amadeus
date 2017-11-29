@@ -23,7 +23,7 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
  
 <div id="amadeus-searcher" ng-app="amadeus" ng-controller="ctrlSearchAmadeus as ctrl" ng-cloak> 
     <div layout="row" flex="100" layout-align="space-between center">
-        <div flex="50" class="pr-10">
+        <div flex="33" class="pr-10">
             <md-input-container class="all-width">
                 <label for="from">Desde</label>
                 <md-autocomplete
@@ -50,7 +50,7 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
             </md-input-container>
         </div>
         
-        <div flex="50" class="pl-10">
+        <div flex="33" class="pl-10">
             <md-input-container class="all-width">
                 <label for="to">Hasta</label>
                 <md-autocomplete
@@ -76,6 +76,12 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
                 </div>
             </md-input-container>
         </div>
+
+        <div flex="33">
+            <button class="rsform-submit-button" ng-click="search()">
+                Buscar
+            </button>
+        </div>
     </div>
 
     <div ng-if="openFilters" class="mt-8">
@@ -86,54 +92,56 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
             </md-radio-group>
         </div>
 
-        <div layout="row" layout-align="space-between center" >
-            <div flex="50" layout="row" class="pr-10" layout-align="start center">
-                <div class="h6">Fecha de salida</div>
-                <div>
-                    <md-datepicker md-min-date="minDate" ng-model="data.startDate" md-placeholder="-/-/-" md-open-on-focus></md-datepicker>
+        <div layout="row" layout-align="space-between center">
+            <div layout="row" flex="50" layout-align="start center">
+                <div flex="50" layout="row" class="pr-10" layout-align="start center">
+                    <div class="h6">Fecha de salida</div>
+                    <div>
+                        <md-datepicker md-min-date="minDate" ng-model="data.startDate" md-placeholder="-/-/-" md-open-on-focus></md-datepicker>
+                    </div>
+                </div>
+
+                <div flex="50" layout="row" class="pr-10" layout-align="start center">
+                    <div class="h6">Fecha de regreso</div>
+                    <div>
+                        <md-datepicker md-min-date="data.startDate" ng-disabled="!data.startDate" ng-model="data.endDate" md-placeholder="-/-/-" md-open-on-focus></md-datepicker>
+                    </div>
                 </div>
             </div>
 
-            <div flex="50" layout="row" class="pr-10" layout-align="start center">
-                <div class="h6">Fecha de regreso</div>
-                <div>
-                    <md-datepicker md-min-date="data.startDate" ng-disabled="!data.startDate" ng-model="data.endDate" md-placeholder="-/-/-" md-open-on-focus></md-datepicker>
+            <div layout="row" flex="50" layout-align="start center">
+                <div flex class="pr-10">
+                    <md-input-container>
+                        <label for="from">Adultos</label>
+                        <md-select ng-model="data.adults">
+                            <md-option ng-repeat="passenger in passengers" ng-value="passenger">
+                                {{passenger}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
                 </div>
-            </div>
-        </div>
 
-        <div layout="row" layout-align="space-between center" class="bt">
-            <div flex class="pr-10">
-                <md-input-container>
-                    <label for="from">Adultos</label>
-                    <md-select ng-model="data.adults">
-                        <md-option ng-repeat="passenger in passengers" ng-value="passenger">
-                            {{passenger}}
-                        </md-option>
-                    </md-select>
-                </md-input-container>
-            </div>
+                <div flex class="pl-10 pr-10">
+                    <md-input-container>
+                        <label for="from">Niños (2-11)</label>
+                        <md-select ng-model="data.childrens">
+                            <md-option ng-repeat="passenger in passengers" ng-value="passenger">
+                                {{passenger}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
 
-            <div flex class="pl-10 pr-10">
-                <md-input-container>
-                    <label for="from">Niños (2-11)</label>
-                    <md-select ng-model="data.childrens">
-                        <md-option ng-repeat="passenger in passengers" ng-value="passenger">
-                            {{passenger}}
-                        </md-option>
-                    </md-select>
-                </md-input-container>
-            </div>
-
-            <div flex class="pl-10">
-                <md-input-container>
-                    <label for="from">Infantes (0-2)</label>
-                    <md-select ng-model="data.infants">
-                        <md-option ng-repeat="passenger in passengers" ng-value="passenger">
-                            {{passenger}}
-                        </md-option>
-                    </md-select>
-                </md-input-container>
+                <div flex class="pl-10">
+                    <md-input-container>
+                        <label for="from">Infantes (0-2)</label>
+                        <md-select ng-model="data.infants">
+                            <md-option ng-repeat="passenger in passengers" ng-value="passenger">
+                                {{passenger}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
             </div>
         </div>
     </div>
