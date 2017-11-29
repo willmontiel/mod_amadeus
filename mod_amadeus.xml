@@ -14,6 +14,7 @@
         <filename module="mod_amadeus">mod_amadeus.php</filename>
         <folder>tmpl</folder>
         <folder>js</folder>
+        <folder>lib</folder>
         <folder>css</folder>
         <filename>helper.php</filename>
         <filename>index.html</filename>
