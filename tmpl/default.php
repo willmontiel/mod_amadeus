@@ -21,9 +21,9 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
  
 ?>
  
-<div ng-app="amadeus" ng-controller="ctrlSearchAmadeus as ctrl" ng-cloak> 
-    <div layout="row" layout-align="space-between center">
-        <div flex class="pr-10">
+<div id="amadeus-searcher" ng-app="amadeus" ng-controller="ctrlSearchAmadeus as ctrl" ng-cloak> 
+    <div layout="row" flex="100" layout-align="space-between center">
+        <div flex="50" class="pr-10">
             <md-input-container class="all-width">
                 <label for="from">Desde</label>
                 <md-autocomplete
@@ -50,7 +50,7 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
             </md-input-container>
         </div>
         
-        <div flex class="pl-10">
+        <div flex="50" class="pl-10">
             <md-input-container class="all-width">
                 <label for="to">Hasta</label>
                 <md-autocomplete
@@ -78,51 +78,40 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
         </div>
     </div>
 
-    <div ng-if="openFilters" class="mt-5">
+    <div ng-if="openFilters" class="mt-8">
         <div layout="row" layout-align="start center">
-            <div class="form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" type="radio" name="route" id="route1" value="1" checked>
-                    Ida y vuelta
-                </label>
+            <md-radio-group layout="row" ng-model="data.route">
+                <md-radio-button value="1" class="md-primary pr-8">Ida y vuelta</md-radio-button>
+                <md-radio-button value="2" class="md-primary pl-8"> Solo ida </md-radio-button>
+            </md-radio-group>
+        </div>
+
+        <div layout="row" layout-align="space-between center">
+            <div flex="50" class="pr-10">
+                <div class="h5">Fecha de salida</div>
+                <md-datepicker md-min-date="minDate" ng-model="data.startDate" md-placeholder="-/-/-" md-open-on-focus></md-datepicker>
             </div>
 
-            <div class="form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" type="radio" name="route" id="route2" value="2">
-                    Solo ida
-                </label>
+            <div flex="50" class="pr-10">
+                <div class="h5">Fecha de regreso</div>
+                <md-datepicker md-min-date="data.startDate" ng-disabled="!data.startDate" ng-model="data.endDate" md-placeholder="-/-/-" md-open-on-focus></md-datepicker>
             </div>
         </div>
 
         <div layout="row" layout-align="space-between center">
-            <div class="form-group">
-                <label for="from">Fecha de salida</label>
-                <input type="text" class="form-control" id="from" name="from" placeholder="Aeropuerto o ciudad">
-                <small id="from" class="form-text text-muted">Escribe y selecciona el aeropuerto o ciudad de origen</small>
-            </div>
-
-            <div class="form-group">
-                <label for="from">Fecha de regreso</label>
-                <input type="text" class="form-control" id="from" name="from" placeholder="Aeropuerto o ciudad">
-                <small id="from" class="form-text text-muted">Escribe y selecciona el aeropuerto o ciudad de origen</small>
-            </div>
-        </div>
-
-        <div layout="row" layout-align="space-between center">
-            <div class="form-group">
+            <div flex class="pr-10">
                 <label for="from">Adultos</label>
-                <input type="text" class="form-control" id="from" name="from" placeholder="Aeropuerto o ciudad">
+                
             </div>
 
-            <div class="form-group">
+            <div flex class="pl-10 pr-10">
                 <label for="from">Niños</label>
-                <input type="text" class="form-control" id="from" name="from" placeholder="Aeropuerto o ciudad">
+                
             </div>
 
-            <div class="form-group">
+            <div flex class="pl-10">
                 <label for="from">Infantes</label>
-                <input type="text" class="form-control" id="from" name="from" placeholder="Aeropuerto o ciudad">
+                
             </div>
         </div>
     </div>

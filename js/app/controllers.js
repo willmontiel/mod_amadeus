@@ -4,6 +4,8 @@
             var self = this;
             $scope.loading = false;
             $scope.openFilters = false;
+            $scope.data = {};
+            $scope.minDate = new Date();
 
             self.isFromDisabled = false;
             self.isFromCached = false;
@@ -52,6 +54,8 @@
                 } else {
                     self.selectedFrom = null;
                 }
+
+                $scope.openFilters = true;
             }
 
             function selectedToChange(item) {

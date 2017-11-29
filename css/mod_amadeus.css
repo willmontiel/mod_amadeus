@@ -1,3 +1,9 @@
+#amadeus-searcher .md-input {
+    border: none !important;
+    margin: auto 8px !important;
+    box-shadow: none !important;
+}
+
 /* Margins */
 /* 5px */
 .m-5 {
