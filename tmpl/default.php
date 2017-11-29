@@ -83,50 +83,8 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
             </div>
         </div>
 
-        <div ng-if="openFilters" class="mt-8">
+        <div ng-if="openFilters" class="">
             <div layout="row" layout-align="space-between center" class="mb-30">
-                <div flex="auto">
-                    <md-radio-group layout="row" ng-model="data.route" name="route" required>
-                        <md-radio-button value="1" class="md-primary pr-8">Ida y vuelta</md-radio-button>
-                        <md-radio-button value="2" class="md-primary pl-8"> Solo ida </md-radio-button>
-                    </md-radio-group>
-                </div>
-                
-                <div flex="auto" class="pr-10">
-                    <md-input-container>
-                        <label for="from">Adultos</label>
-                        <md-select ng-model="data.adults">
-                            <md-option ng-repeat="passenger in passengers" ng-value="passenger">
-                                {{passenger}}
-                            </md-option>
-                        </md-select>
-                    </md-input-container>
-                </div>
-
-                <div flex="auto" class="pl-10 pr-10">
-                    <md-input-container>
-                        <label for="from">Niños (2-11)</label>
-                        <md-select ng-model="data.childs">
-                            <md-option ng-repeat="passenger in passengers" ng-value="passenger">
-                                {{passenger}}
-                            </md-option>
-                        </md-select>
-                    </md-input-container>
-                </div>
-
-                <div flex="auto" class="pl-10">
-                    <md-input-container>
-                        <label for="from">Infantes (0-2)</label>
-                        <md-select ng-model="data.infants">
-                            <md-option ng-repeat="passenger in passengers" ng-value="passenger">
-                                {{passenger}}
-                            </md-option>
-                        </md-select>
-                    </md-input-container>
-                </div>
-            </div>
-
-            <div layout="row" layout-align="space-between center">
                 <div layout="row" class="pr-10" layout-align="start center">
                     <div class="h6">Fecha de salida</div>
                     <div>
@@ -140,7 +98,7 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
                     </div>
                 </div>
 
-                <div layout="row" class="pr-10" layout-align="start center">
+                <div ng-if="data.route == 1" layout="row" class="pr-10" layout-align="start center">
                     <div class="h6">Fecha de regreso</div>
                     <div>
                         <md-datepicker md-min-date="data.startDate" 
@@ -148,10 +106,51 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
                             ng-model="data.endDate" 
                             md-placeholder="--/--/----" 
                             md-open-on-focus
-                            name="endDate" 
-                            required>
+                            name="endDate">
                         </md-datepicker>
                     </div>
+                </div>
+            </div>
+
+            <div layout="row" layout-align="space-between center" class="">
+                <div flex="auto">
+                    <md-radio-group layout="row" ng-model="data.route" name="route" required>
+                        <md-radio-button value="1" class="md-primary pr-8">Ida y vuelta</md-radio-button>
+                        <md-radio-button value="2" class="md-primary pl-8" ng-click="data.endDate = null"> Solo ida </md-radio-button>
+                    </md-radio-group>
+                </div>
+                
+                <div flex="auto" class="pr-10">
+                    <md-input-container class="all-width">
+                        <label for="from">Adultos</label>
+                        <md-select ng-model="data.adults">
+                            <md-option ng-repeat="passenger in passengers" ng-value="passenger">
+                                {{passenger}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+
+                <div flex="auto" class="pl-10 pr-10">
+                    <md-input-container class="all-width">
+                        <label for="from">Niños (2-11)</label>
+                        <md-select ng-model="data.childs">
+                            <md-option ng-repeat="passenger in passengers" ng-value="passenger">
+                                {{passenger}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+
+                <div flex="auto" class="pl-10">
+                    <md-input-container class="all-width">
+                        <label for="from">Infantes (0-2)</label>
+                        <md-select ng-model="data.infants">
+                            <md-option ng-repeat="passenger in passengers" ng-value="passenger">
+                                {{passenger}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
                 </div>
             </div>
 

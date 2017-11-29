@@ -87,7 +87,10 @@
             }
 
             $scope.search = function() {
-                console.log(amadeusService.getSearchUrl($scope.data));
+                var url = amadeusService.getSearchUrl($scope.data);
+                if (url && url != "") {
+                    $window.open(url, '_blank');
+                }
             }
         }]);
 })();
