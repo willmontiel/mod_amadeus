@@ -1,6 +1,6 @@
 (function () {
   angular.module('amadeus.controllers', [])
-        .controller('ctrlSearchAmadeus', ['$scope', '$window', '$http', function ($scope, $window,$http) {
+        .controller('ctrlSearchAmadeus', ['$scope', '$window', '$http', 'amadeusService', function ($scope, $window, $http, amadeusService) {
             var self = this;
             $scope.loading = false;
             $scope.openFilters = false;
@@ -58,8 +58,10 @@
             function selectedFromChange(item) {
                 if (item) {
                     self.selectedFrom = item;
+                    $scope.data.from = item;
                 } else {
                     self.selectedFrom = null;
+                    $scope.data.from = null;
                 }
 
                 $scope.openFilters = true;
@@ -68,8 +70,10 @@
             function selectedToChange(item) {
                 if (item) {
                     self.selectedTo = item;
+                    $scope.data.to = item;
                 } else {
                     self.selectedTo = null;
+                    $scope.data.to = null;
                 }
             }
 
@@ -78,7 +82,7 @@
             }
 
             $scope.search = function() {
-                
+                console.log(amadeusService.getSearchUrl($scope.data));
             }
         }]);
 })();
