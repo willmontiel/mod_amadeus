@@ -4,7 +4,13 @@
             var self = this;
             $scope.loading = false;
             $scope.openFilters = false;
-            $scope.data = {};
+            $scope.data = {
+                adults: 1,
+                childs: 0,
+                infants: 0,
+                route: 1
+            };
+
             $scope.minDate = new Date();
 
             self.isFromDisabled = false;
@@ -12,14 +18,17 @@
             self.selectedFrom = null;
             self.cities = [
                 {
+                    id: 'CLO',
                     name: 'Cali, Colombia (CLO)',
                     description: 'Alfonso B. Aragon'
                 },
                 {
+                    id: 'BOG',
                     name: 'Bogotá, Colombia (BOG)',
                     description: 'El Dorado international'
                 },
                 {
+                    id: 'BAQ',
                     name: 'Barranquilla, Colombia (BAQ)',
                     description: 'E. Cortissoz'
                 }
@@ -27,7 +36,7 @@
 
             $scope.passengers = [];
 
-            for (var i = 1; i < 10; i++) {
+            for (var i = 0; i < 10; i++) {
                 $scope.passengers.push(i);
             }
 
@@ -58,7 +67,7 @@
             function selectedFromChange(item) {
                 if (item) {
                     self.selectedFrom = item;
-                    $scope.data.from = item;
+                    $scope.data.from = item.id;
                 } else {
                     self.selectedFrom = null;
                     $scope.data.from = null;
@@ -70,15 +79,11 @@
             function selectedToChange(item) {
                 if (item) {
                     self.selectedTo = item;
-                    $scope.data.to = item;
+                    $scope.data.to = item.id;
                 } else {
                     self.selectedTo = null;
                     $scope.data.to = null;
                 }
-            }
-
-            $scope.validate = function() {
-
             }
 
             $scope.search = function() {

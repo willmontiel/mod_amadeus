@@ -79,6 +79,10 @@
     margin-bottom: 30px;
 }
 
+.m-15 {
+    margin: 15px;
+}
+
 /* Paddings */
 .p-5 {
     padding: 5px;
