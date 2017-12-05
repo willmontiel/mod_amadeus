@@ -35,16 +35,24 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
                         md-search-text="ctrl.searchFromText"
                         md-selected-item-change="ctrl.selectedFromChange(item)"
                         md-items="item in ctrl.querySearchFrom(ctrl.searchFromText)"
-                        md-item-text="item.name"
-                        md-min-length="0"
+                        md-item-text="getAirportShortName(item)"
+                        md-min-length="1"
                         placeholder="Aeropuerto o ciudad"
                         name="from"
                         required>
                         <md-item-template>
-                            <span md-highlight-text="ctrl.searchFromText" md-highlight-flags="^i">{{item.name}}</span>
+                            <span class="item-title">
+                                <md-icon md-svg-icon="img/icons/octicon-repo.svg"></md-icon>
+                                <span> {{item.city_name}}, {{item.country_name}}, {{item.airport_code}} </span>
+                            </span>
+                            <span class="item-metadata">
+                                <span>
+                                    <strong>{{item.airport_name}}</strong>
+                                </span>
+                            </span>
                         </md-item-template>
                         <md-not-found>
-                            Se encontraron coincidencias con el texto "{{ctrl.searchFromText}}"
+                            No se encontraron coincidencias con el texto "{{ctrl.searchFromText}}"
                         </md-not-found>
                     </md-autocomplete>
 
@@ -64,16 +72,21 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
                         md-search-text="ctrl.searchToText"
                         md-selected-item-change="ctrl.selectedToChange(item)"
                         md-items="item in ctrl.querySearchTo(ctrl.searchToText)"
-                        md-item-text="item.name"
-                        md-min-length="0"
+                        md-item-text="getAirportShortName(item)"
+                        md-min-length="1"
                         placeholder="Aeropuerto o ciudad"
                         name="to"
                         required>
                         <md-item-template>
-                            <span md-highlight-text="ctrl.searchToText" md-highlight-flags="^i">{{item.name}}</span>
+                            <div class="h3" md-highlight-text="ctrl.searchToText" md-highlight-flags="^i">
+                                {{item.city_name}}, {{item.country_name}}, {{item.airport_code}}
+                            </div>
+                            <div class="mt-5 h5">
+                                {{item.airport_name}}
+                            </div>
                         </md-item-template>
                         <md-not-found>
-                            Se encontraron coincidencias con el texto "{{ctrl.searchToText}}"
+                            No se encontraron coincidencias con el texto "{{ctrl.searchToText}}"
                         </md-not-found>
                     </md-autocomplete>
 

@@ -33,7 +33,7 @@
             function querySearch (query) {
                 var deferred = $q.defer();
                 var url = api.airport();
-                restService.get(url.getByName, {name: query}, {},
+                restService.get(url.getByName + '?name=' + query, {}, {},
                     function(response) {
                         deferred.resolve(response.data);
                     },
@@ -65,6 +65,14 @@
                     self.selectedTo = null;
                     $scope.data.to = null;
                 }
+            }
+
+            $scope.getAirportShortName = function(airport) {
+                if (airport) {
+                    return airport.city_name + ", " + airport.country_name + ", " + airport.airport_code;
+                }
+
+                return "";
             }
 
             $scope.search = function() {
