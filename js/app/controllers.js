@@ -48,7 +48,7 @@
             function selectedFromChange(item) {
                 if (item) {
                     self.selectedFrom = item;
-                    $scope.data.from = item.id;
+                    $scope.data.from = item.airport_code;
                 } else {
                     self.selectedFrom = null;
                     $scope.data.from = null;
@@ -60,7 +60,7 @@
             function selectedToChange(item) {
                 if (item) {
                     self.selectedTo = item;
-                    $scope.data.to = item.id;
+                    $scope.data.to = item.airport_code;
                 } else {
                     self.selectedTo = null;
                     $scope.data.to = null;

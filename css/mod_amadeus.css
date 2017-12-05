@@ -255,6 +255,14 @@
   width: 18px;
 }
 .orange-bg {
-    background-color: #FC6621;
-    color: white;
+    background-color: #FC6621 !important;
+    color: white !important;
+}
+
+.orange-bg[disabled] {
+    background-color: rgba(252,102,33,0.5) !important;
+}
+
+.orange-bg[disabled]:hover {
+    cursor: not-allowed !important;
 }
