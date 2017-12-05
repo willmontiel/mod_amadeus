@@ -25,7 +25,7 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
     <div class="background"></div>
     <form name="searchForm" class="p-10 white-fg">
         <div layout="row" flex="100" layout-align="space-between center" layout-wrap>
-            <div flex="50" class="pr-10">
+            <div flex="auto" class="pl-10 pr-10">
                 <md-input-container class="all-width">
                     <label for="from" class="white-fg h3 text-bold">Desde</label>
                     <md-autocomplete
@@ -63,7 +63,7 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
                 </md-input-container>
             </div>
             
-            <div flex="50" class="pl-10">
+            <div flex="auto" class="pl-10 pr-10">
                 <md-input-container class="all-width">
                     <label for="to" class="white-fg h3 text-bold">Hasta</label>
                     <md-autocomplete
@@ -104,10 +104,11 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
 
         <div ng-if="openFilters" class="">
             <div layout="row" layout-align="space-between center" class="mb-30" layout-wrap>
-                <div layout="row" class="pr-10" layout-align="start center" layout-wrap>
+                <div flex="auto" layout="row" class="pl-10 pr-10 pt-8" layout-align="start center" layout-wrap>
                     <div class="white-fg z-index-10 h6">Fecha de salida *</div>
                     <div>
                         <md-datepicker md-min-date="minDate" 
+                            class="all-width"
                             ng-model="data.startDate"  
                             md-placeholder="--/--/----" 
                             md-open-on-focus
@@ -117,10 +118,11 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
                     </div>
                 </div>
 
-                <div ng-if="data.flightType == 'RoundTrip'" layout="row" class="pr-10" layout-align="start center" layout-wrap>
+                <div flex="auto" ng-if="data.flightType == 'RoundTrip'" layout="row" class="pl-10 pr-10 pt-8" layout-align="start center" layout-wrap>
                     <div class="white-fg z-index-10 h6">Fecha de regreso</div>
                     <div>
                         <md-datepicker md-min-date="data.startDate" 
+                            class="all-width"
                             ng-disabled="!data.startDate" 
                             ng-model="data.endDate" 
                             md-placeholder="--/--/----" 
@@ -131,8 +133,8 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
                 </div>
             </div>
 
-            <div layout="row" layout-align="space-between center" class="" layout-wrap>
-                <div flex="auto">
+            <div layout="row" layout-align="space-between center" class="pl-10 pr-10" layout-wrap>
+                <div flex="auto" class="pb-10">
                     <md-radio-group layout="row" ng-model="data.flightType" name="flightType" required>
                         <md-radio-button value="RoundTrip" class="md-primary pr-8">Ida y vuelta</md-radio-button>
                         <md-radio-button value="OneWay" class="md-primary pl-8" ng-click="data.endDate = null">Solo ida</md-radio-button>
