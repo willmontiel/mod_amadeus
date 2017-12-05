@@ -1,6 +1,6 @@
 (function () {
   angular.module('amadeus.controllers', [])
-        .controller('ctrlSearchAmadeus', ['$scope', '$window', '$http', 'amadeusService', function ($scope, $window, $http, amadeusService) {
+        .controller('ctrlSearchAmadeus', ['$scope', '$window', '$q', 'amadeusService', 'restService', 'api', function ($scope, $window, $q, amadeusService, restService, api) {
             var self = this;
             $scope.loading = false;
             $scope.openFilters = false;
@@ -12,37 +12,17 @@
             };
 
             $scope.minDate = new Date();
-
-            self.isFromDisabled = false;
-            self.isFromCached = false;
-            self.selectedFrom = null;
-            self.cities = [
-                {
-                    id: 'CLO',
-                    name: 'Cali, Colombia (CLO)',
-                    description: 'Alfonso B. Aragon'
-                },
-                {
-                    id: 'BOG',
-                    name: 'Bogotá, Colombia (BOG)',
-                    description: 'El Dorado international'
-                },
-                {
-                    id: 'BAQ',
-                    name: 'Barranquilla, Colombia (BAQ)',
-                    description: 'E. Cortissoz'
-                }
-            ];
-
             $scope.passengers = [];
 
             for (var i = 0; i < 10; i++) {
                 $scope.passengers.push(i);
             }
 
+            self.isFromDisabled = false;
+            self.isFromCached = false;
+            self.selectedFrom = null;
             self.querySearchFrom = querySearch;
             self.selectedFromChange = selectedFromChange;
-
 
             self.isToDisabled = false;
             self.isToCached = false;
@@ -51,17 +31,18 @@
             self.selectedToChange = selectedToChange;
 
             function querySearch (query) {
-                var results = query ? self.cities.filter( createFilterFor(query) ) : self.cities;
-                return results;
-            }
+                var deferred = $q.defer();
+                var url = api.airport();
+                restService.get(url.getByName, {name: query}, {},
+                    function(response) {
+                        deferred.resolve(response.data);
+                    },
+                    function(response) {
+                        deferred.reject(response);
+                    }
+                );
 
-            function createFilterFor(query) {
-                var lowercaseQuery = angular.lowercase(query);
-
-                return function filterFn(city) {
-                    res = angular.lowercase(city.name);
-                    return res.indexOf(lowercaseQuery.toLowerCase())!=-1;
-                };
+                return deferred.promise;
             }
 
             function selectedFromChange(item) {

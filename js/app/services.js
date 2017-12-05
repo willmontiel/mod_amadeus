@@ -1,6 +1,6 @@
 (function () {
     angular.module('amadeus.services', [])
-        .factory('amadeusService', ['$http', '$q', function ($http, $q) {
+        .factory('amadeusService', function () {
                 function getSearchUrl(data) {
                     var host = 'https://www-amer.epower.amadeus.com/';
                     var client = 'cruceroturismo/#';
@@ -46,6 +46,51 @@
                     formatDate: formatDate
                 };
 
+            })
+        
+        .factory('restService', ['$http', '$q', function ($http, $q) {
+                function get(url, data, config, cb_success, cb_error) {
+                    $http.get(url, data, config)
+                        .then(
+                            function(response) {
+                                cb_success(response);
+                            }, 
+                            function(response) {
+                                cb_error(response);
+                            }
+                        );
+                }
+
+                function post(url, data, config, cb_success, cb_error) {
+                    $http.post(url, data, config)
+                        .then(
+                            function(response) {
+                                cb_success(response);
+                            }, 
+                            function(response) {
+                                cb_error(response);
+                            }
+                        );
+                }
+
+                return {
+                    get: get,
+                    post: post
+                }
             }])
 
+        .factory('api', function () {
+                function airport() {
+                    var airport = {
+                        getByName: 'modules/mod_amadeus/tmpl/airport.php'
+                    }
+
+                    return airport;
+                }
+
+                return {
+                    airport: airport,
+                };
+
+            })
 })();
