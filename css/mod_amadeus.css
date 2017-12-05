@@ -11,7 +11,7 @@
 }
 
 #amadeus-searcher .background {
-    background-color: #0A62A3;
+    background-image: url('../images/blue-bg.png');
     opacity: 0.7;
     position: absolute;
     top: 0px;
@@ -247,10 +247,14 @@
 }
 .autocomplete-custom-template .item-title,
 .autocomplete-custom-template .item-metadata {
-  display: block;
-  line-height: 2;
+    display: block;
+    line-height: 2;
 }
 .autocomplete-custom-template .item-title md-icon {
   height: 18px;
   width: 18px;
+}
+.orange-bg {
+    background-color: #FC6621;
+    color: white;
 }

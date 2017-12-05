@@ -39,15 +39,16 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
                         md-min-length="1"
                         placeholder="Aeropuerto o ciudad"
                         name="from"
+                        md-menu-class="autocomplete-custom-template"
                         required>
                         <md-item-template>
                             <span class="item-title">
-                                <md-icon md-svg-icon="img/icons/octicon-repo.svg"></md-icon>
-                                <span> {{item.city_name}}, {{item.country_name}}, {{item.airport_code}} </span>
+                                <span class=""> {{item.city_name}}, {{item.country_name}}, {{item.airport_code}} </span>
                             </span>
                             <span class="item-metadata">
+                                <span>&#9992;</span>
                                 <span>
-                                    <strong>{{item.airport_name}}</strong>
+                                    <strong class="h7">{{item.airport_name}}</strong>
                                 </span>
                             </span>
                         </md-item-template>
@@ -76,14 +77,18 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
                         md-min-length="1"
                         placeholder="Aeropuerto o ciudad"
                         name="to"
+                        md-menu-class="autocomplete-custom-template"
                         required>
                         <md-item-template>
-                            <div class="h3" md-highlight-text="ctrl.searchToText" md-highlight-flags="^i">
-                                {{item.city_name}}, {{item.country_name}}, {{item.airport_code}}
-                            </div>
-                            <div class="mt-5 h5">
-                                {{item.airport_name}}
-                            </div>
+                            <span class="item-title">
+                                <span class=""> {{item.city_name}}, {{item.country_name}}, {{item.airport_code}} </span>
+                            </span>
+                            <span class="item-metadata">
+                                <span>&#9992;</span>
+                                <span>
+                                    <strong class="h7">{{item.airport_name}}</strong>
+                                </span>
+                            </span>
                         </md-item-template>
                         <md-not-found>
                             No se encontraron coincidencias con el texto "{{ctrl.searchToText}}"
@@ -170,7 +175,7 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
 
             <div layout="row" layout-align="center center" class="m-15">
                 <md-button ng-click="search()" 
-                    class="md-raised md-primary"
+                    class="md-raised orange-bg"
                     ng-disabled="searchForm.$invalid || searchForm.$pristine || vm.loading">
                     Buscar
                 </md-button>

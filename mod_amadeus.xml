@@ -15,6 +15,7 @@
         <folder>tmpl</folder>
         <folder>js</folder>
         <folder>lib</folder>
+        <folder>images</folder>
         <folder>css</folder>
         <folder>sql</folder>
         <filename>helper.php</filename>
