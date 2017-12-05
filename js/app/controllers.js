@@ -8,7 +8,7 @@
                 adults: 1,
                 childs: 0,
                 infants: 0,
-                route: 1
+                flightType: 'RoundTrip'
             };
 
             $scope.minDate = new Date();

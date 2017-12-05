@@ -13,7 +13,8 @@
                         'DepartureDate=' + formatDate(data.startDate, 'm/d/Y'),
                         'ReturnDate=' + formatDate(data.endDate, 'm/d/Y'),
                         'From=' + validateValue(data.from),
-                        'To=' + validateValue(data.to)
+                        'To=' + validateValue(data.to),
+                        'FlightType=' + validateValue(data.flightType)
                     ];
 
 

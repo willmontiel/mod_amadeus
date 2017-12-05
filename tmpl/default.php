@@ -24,7 +24,7 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
 <div id="amadeus-searcher" ng-app="amadeus" ng-controller="ctrlSearchAmadeus as ctrl" ng-cloak> 
     <div class="background"></div>
     <form name="searchForm" class="p-10 white-fg">
-        <div layout="row" flex="100" layout-align="space-between center">
+        <div layout="row" flex="100" layout-align="space-between center" layout-wrap>
             <div flex="50" class="pr-10">
                 <md-input-container class="all-width">
                     <label for="from" class="white-fg h3 text-bold">Desde</label>
@@ -103,8 +103,8 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
         </div>
 
         <div ng-if="openFilters" class="">
-            <div layout="row" layout-align="space-between center" class="mb-30">
-                <div layout="row" class="pr-10" layout-align="start center">
+            <div layout="row" layout-align="space-between center" class="mb-30" layout-wrap>
+                <div layout="row" class="pr-10" layout-align="start center" layout-wrap>
                     <div class="white-fg z-index-10 h6">Fecha de salida *</div>
                     <div>
                         <md-datepicker md-min-date="minDate" 
@@ -117,7 +117,7 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
                     </div>
                 </div>
 
-                <div ng-if="data.route == 1" layout="row" class="pr-10" layout-align="start center">
+                <div ng-if="data.flightType == 'RoundTrip'" layout="row" class="pr-10" layout-align="start center" layout-wrap>
                     <div class="white-fg z-index-10 h6">Fecha de regreso</div>
                     <div>
                         <md-datepicker md-min-date="data.startDate" 
@@ -131,11 +131,11 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
                 </div>
             </div>
 
-            <div layout="row" layout-align="space-between center" class="">
+            <div layout="row" layout-align="space-between center" class="" layout-wrap>
                 <div flex="auto">
-                    <md-radio-group layout="row" ng-model="data.route" name="route" required>
-                        <md-radio-button value="1" class="md-primary pr-8">Ida y vuelta</md-radio-button>
-                        <md-radio-button value="2" class="md-primary pl-8" ng-click="data.endDate = null"> Solo ida </md-radio-button>
+                    <md-radio-group layout="row" ng-model="data.flightType" name="flightType" required>
+                        <md-radio-button value="RoundTrip" class="md-primary pr-8">Ida y vuelta</md-radio-button>
+                        <md-radio-button value="OneWay" class="md-primary pl-8" ng-click="data.endDate = null">Solo ida</md-radio-button>
                     </md-radio-group>
                 </div>
                 
