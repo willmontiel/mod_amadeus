@@ -174,31 +174,31 @@
 
 /* Font size */
 .h1 {
-    font-size: 2.4rem;
+    font-size: 38px;
 }
 
 .h2 {
-    font-size: 2rem;
+    font-size: 30px;
 }
 
 .h3 {
-    font-size: 1.6rem;
+    font-size: 25px;
 }
 
 .h4 {
-    font-size: 1.4rem;
+    font-size: 20px;
 }
 
 .h5 {
-    font-size: 1.3rem;
+    font-size: 15px;
 }
 
 .h6 {
-    font-size: 1.2rem;
+    font-size: 12px;
 }
 
 .h7 {
-    font-size: 0.7rem;
+    font-size: 10px;
 }
 
 /* borders */
