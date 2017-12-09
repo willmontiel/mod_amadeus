@@ -23,8 +23,8 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
  
 <div id="amadeus-searcher" ng-app="amadeus" ng-controller="ctrlSearchAmadeus as ctrl" ng-cloak> 
     <div class="background"></div>
-    <form name="searchForm" class="p-10 white-fg">
-        <div layout="row" flex="100" layout-align="space-between center" layout-wrap>
+    <form name="searchForm" class="p-10 relative white-fg">
+        <div  class="pt-10" layout="row" flex="100" layout-align="space-between center" layout-wrap>
             <div flex="auto" class="pl-10 pr-10">
                 <md-input-container class="all-width">
                     <label for="from" class="white-fg h3 text-bold">Desde</label>
@@ -102,8 +102,8 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
             </div>
         </div>
 
-        <div ng-if="openFilters" class="">
-            <div layout="row" layout-align="space-between center" class="mb-30" layout-wrap>
+        <div ng-if="openFilters" class="openFilters">
+            <div layout="row" layout-align="space-between center" class="mb-30 pl-10 pr-10" layout-wrap>
                 <div flex="auto" layout="row" class="pl-10 pr-10 pt-8" layout-align="start center" layout-wrap>
                     <div class="white-fg z-index-10 h6">Fecha de salida *</div>
                     <div>
@@ -133,7 +133,7 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
                 </div>
             </div>
 
-            <div layout="row" layout-align="space-between center" class="pl-10 pr-10" layout-wrap>
+            <div layout="row" layout-align="space-between center" class="pl-20 pr-20" layout-wrap>
                 <div flex="auto" class="pb-10">
                     <md-radio-group layout="row" ng-model="data.flightType" name="flightType" required>
                         <md-radio-button value="RoundTrip" class="md-primary pr-8">Ida y vuelta</md-radio-button>
