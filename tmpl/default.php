@@ -26,6 +26,7 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
     <form name="searchForm" class="p-10 mb-0 relative white-fg">
         <div class="" layout="row" flex="100" layout-align="start center" layout-wrap>
             <div class="title p-10">
+                <img src="modules/mod_amadeus/images/airplane-flight-white.png" class="label-image" alt="fly">
                 Comprar tiquetes
             </div>
         </div>
@@ -33,7 +34,7 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
             <div flex="auto" class="pl-10 pr-10">
                 <md-input-container class="all-width mb-0">
                     <label for="from" class="white-fg h3 text-bold">
-                        <img src="modules/mod_amadeus/images/airplane-flight.png" class="label-image" alt="fly">
+                        <img src="modules/mod_amadeus/images/location.png" class="label-image" alt="fly">
                         Desde
                     </label>
                     <md-autocomplete
@@ -75,7 +76,7 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
             <div flex="auto" class="pl-10 pr-10">
                 <md-input-container class="all-width mb-0">
                     <label for="to" class="white-fg h3 text-bold">
-                        <img src="modules/mod_amadeus/images/airplane-flight.png" class="label-image" alt="fly">
+                        <img src="modules/mod_amadeus/images/location.png" class="label-image" alt="fly">
                         Hasta
                     </label>
                     <md-autocomplete
