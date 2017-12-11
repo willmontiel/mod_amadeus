@@ -26,7 +26,7 @@
 
 #amadeus-searcher .openFilters {
     position: absolute;
-    top: 128px;
+    top: 176px;
     width: 100%;
     left: 0px;
     z-index: 99999999999999;
@@ -361,14 +361,53 @@
   width: 18px;
 }
 .orange-bg {
-    background-color: #FC6621 !important;
+    background-color: #F5DB33 !important;
     color: white !important;
 }
 
 .orange-bg[disabled] {
-    background-color: rgba(252,102,33,0.5) !important;
+    background-color: rgba(245,219,51,0.5) !important;
 }
 
 .orange-bg[disabled]:hover {
     cursor: not-allowed !important;
+}
+
+.relative {
+    position: relative;
+}
+
+.close-button {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+.close-button span {
+    font-size: 30px;
+    color: white;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.p-15 {
+    padding: 15px;
+}
+
+.label-image {
+    width: 18px;
+}
+
+.title {
+    background-color: #1463a1;
+}
+
+.no-margin {
+    margin: 0px !important;
+}
+
+.mb-0 {
+    margin-bottom: 0px !important;
 }

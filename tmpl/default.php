@@ -24,15 +24,24 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
 <div id="amadeus-searcher" ng-app="amadeus" ng-controller="ctrlSearchAmadeus as ctrl" ng-cloak> 
     <div class="background"></div>
     <form name="searchForm" class="p-10 relative white-fg">
+        <div class="pt-20" layout="row" flex="100" layout-align="start center" layout-wrap>
+            <div class="title p-10">
+                Comprar tiquetes
+            </div>
+        </div>
         <div  class="pt-10" layout="row" flex="100" layout-align="space-between center" layout-wrap>
             <div flex="auto" class="pl-10 pr-10">
-                <md-input-container class="all-width">
-                    <label for="from" class="white-fg h3 text-bold">Desde</label>
+                <md-input-container class="all-width mb-0">
+                    <label for="from" class="white-fg h3 text-bold">
+                        <img src="modules/mod_amadeus/images/airplane-flight.png" class="label-image" alt="fly">
+                        Desde
+                    </label>
                     <md-autocomplete
                         ng-disabled="ctrl.isFromDisabled"
                         md-no-cache="ctrl.isFromCached"
                         md-selected-item="ctrl.selectedFrom"
                         md-search-text="ctrl.searchFromText"
+                        md-search-text-change="ctrl.searchTextChange(ctrl.searchFromText)"
                         md-selected-item-change="ctrl.selectedFromChange(item)"
                         md-items="item in ctrl.querySearchFrom(ctrl.searchFromText)"
                         md-item-text="getAirportShortName(item)"
@@ -64,14 +73,18 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
             </div>
             
             <div flex="auto" class="pl-10 pr-10">
-                <md-input-container class="all-width">
-                    <label for="to" class="white-fg h3 text-bold">Hasta</label>
+                <md-input-container class="all-width mb-0">
+                    <label for="to" class="white-fg h3 text-bold">
+                        <img src="modules/mod_amadeus/images/airplane-flight.png" class="label-image" alt="fly">
+                        Hasta
+                    </label>
                     <md-autocomplete
                         ng-disabled="ctrl.isToDisabled"
                         md-no-cache="ctrl.isToCached"
                         md-selected-item="ctrl.selectedTo"
                         md-search-text="ctrl.searchToText"
                         md-selected-item-change="ctrl.selectedToChange(item)"
+                        md-search-text-change="ctrl.searchTextChange(ctrl.searchToText)"
                         md-items="item in ctrl.querySearchTo(ctrl.searchToText)"
                         md-item-text="getAirportShortName(item)"
                         md-min-length="1"
@@ -175,12 +188,19 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
                 </div>
             </div>
 
-            <div layout="row" layout-align="center center" class="m-15">
+            <div layout="row" layout-align="center center" class="m-15 relative">
                 <md-button ng-click="search()" 
                     class="md-raised orange-bg"
                     ng-disabled="searchForm.$invalid || searchForm.$pristine || vm.loading">
                     Buscar
                 </md-button>
+
+                <div class="close-button p-15"
+                    ng-click="hideFilters()">
+                    <span class="cursor-pointer">
+                        &times;
+                    </span>
+                </div>
             </div>
         </div>
     </form>

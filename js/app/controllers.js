@@ -30,6 +30,12 @@
             self.querySearchTo = querySearch;
             self.selectedToChange = selectedToChange;
 
+            self.searchTextChange = searchTextChange;
+
+            function searchTextChange(text) {
+                //$scope.openFilters = true;
+            }
+
             function querySearch (query) {
                 var deferred = $q.defer();
                 var url = api.airport();
@@ -65,6 +71,8 @@
                     self.selectedTo = null;
                     $scope.data.to = null;
                 }
+
+                $scope.openFilters = true;
             }
 
             $scope.getAirportShortName = function(airport) {
@@ -80,6 +88,10 @@
                 if (url && url != "") {
                     $window.open(url, '_blank');
                 }
+            }
+
+            $scope.hideFilters = function() {
+                $scope.openFilters = false;
             }
         }]);
 })();
