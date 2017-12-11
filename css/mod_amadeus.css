@@ -26,7 +26,7 @@
 
 #amadeus-searcher .openFilters {
     position: absolute;
-    top: 176px;
+    top: 158px;
     width: 100%;
     left: 0px;
     z-index: 99999999999999;
@@ -402,6 +402,7 @@
 
 .title {
     background-color: #1463a1;
+    font-size: 16px;
 }
 
 .no-margin {
@@ -410,4 +411,8 @@
 
 .mb-0 {
     margin-bottom: 0px !important;
+}
+
+.pt-30 {
+    padding-top: 30px;
 }

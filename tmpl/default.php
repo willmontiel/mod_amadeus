@@ -23,13 +23,13 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
  
 <div id="amadeus-searcher" ng-app="amadeus" ng-controller="ctrlSearchAmadeus as ctrl" ng-cloak> 
     <div class="background"></div>
-    <form name="searchForm" class="p-10 relative white-fg">
-        <div class="pt-20" layout="row" flex="100" layout-align="start center" layout-wrap>
+    <form name="searchForm" class="p-10 mb-0 relative white-fg">
+        <div class="" layout="row" flex="100" layout-align="start center" layout-wrap>
             <div class="title p-10">
                 Comprar tiquetes
             </div>
         </div>
-        <div  class="pt-10" layout="row" flex="100" layout-align="space-between center" layout-wrap>
+        <div  class="pt-20" layout="row" flex="100" layout-align="space-between center" layout-wrap>
             <div flex="auto" class="pl-10 pr-10">
                 <md-input-container class="all-width mb-0">
                     <label for="from" class="white-fg h3 text-bold">
