@@ -21,7 +21,7 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
  
 ?>
  
-<div id="amadeus-searcher" ng-app="amadeus" ng-controller="ctrlSearchAmadeus as ctrl" ng-cloak> 
+<div id="amadeus-searcher" class="col-md-offset-1 col-md-10 col-xs-12" ng-app="amadeus" ng-controller="ctrlSearchAmadeus as ctrl" ng-cloak> 
     <div class="background"></div>
     <form name="searchForm" class="p-10 mb-0 relative white-fg">
         <div class="" layout="row" flex="100" layout-align="start center" layout-wrap>

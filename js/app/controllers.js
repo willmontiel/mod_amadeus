@@ -11,7 +11,18 @@
                 flightType: 'RoundTrip'
             };
 
-            $scope.minDate = new Date();
+            $scope.addDays = function (startDate, numberOfDays) {
+                var returnDate = new Date(
+                                        startDate.getFullYear(),
+                                        startDate.getMonth(),
+                                        startDate.getDate()+numberOfDays,
+                                        startDate.getHours(),
+                                        startDate.getMinutes(),
+                                        startDate.getSeconds());
+                return returnDate;
+            }
+
+            $scope.minDate = $scope.addDays(new Date(), 3);
             $scope.passengers = [];
 
             for (var i = 0; i < 10; i++) {
@@ -33,7 +44,7 @@
             self.searchTextChange = searchTextChange;
 
             function searchTextChange(text) {
-                //$scope.openFilters = true;
+                $scope.openFilters = true;
             }
 
             function querySearch (query) {

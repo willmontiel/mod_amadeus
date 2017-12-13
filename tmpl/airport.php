@@ -27,7 +27,7 @@ class AirportService {
 
         $this->query->select($this->db->quoteName(array('id', 'airport_name', 'city_name', 'country_name', 'airport_code')));
         $this->query->from($this->db->quoteName('#__amadeus'));
-        $this->query->where($this->db->quoteName('city_name') . ' LIKE ' . $this->db->quote($name, false));
+        $this->query->where($this->db->quoteName('city_name') . ' LIKE ' . $this->db->quote($name, false) . ' OR ' . $this->db->quoteName('airport_name') . ' LIKE ' . $this->db->quote($name, false));
         $this->query->order('airport_name ASC');
 
         // Reset the query using our newly populated query object.

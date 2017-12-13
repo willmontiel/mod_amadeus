@@ -15,7 +15,7 @@
 }
 
 #amadeus-searcher .background {
-    background-color: rgba(0,0,0,0.8);
+    /* background-color: rgba(0,0,0,0.8); */
     position: absolute;
     top: 0px;
     left: 0px;
@@ -26,7 +26,7 @@
 
 #amadeus-searcher .openFilters {
     position: absolute;
-    top: 158px;
+    top: 166px;
     width: 100%;
     left: 0px;
     z-index: 99999999999999;
@@ -361,7 +361,7 @@
   width: 18px;
 }
 .orange-bg {
-    background-color: #F5DB33 !important;
+    background-color: #E8B40C !important;
     color: white !important;
 }
 
@@ -415,4 +415,8 @@
 
 .pt-30 {
     padding-top: 30px;
+}
+
+.black-bg {
+    background-color: rgba(0,0,0,0.8);
 }
