@@ -23,7 +23,7 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
  
 <div id="amadeus-searcher" class="col-md-offset-1 col-md-10 col-xs-12" ng-app="amadeus" ng-controller="ctrlSearchAmadeus as ctrl" ng-cloak> 
     <div class="background"></div>
-    <form name="searchForm" class="p-10 mb-0 relative white-fg">
+    <form name="searchForm" class="p-10 mb-0 white-fg">
         <div class="" layout="row" flex="100" layout-align="start center" layout-wrap>
             <div class="title p-10">
                 <img src="modules/mod_amadeus/images/airplane-flight-white.png" class="label-image" alt="fly">
@@ -116,91 +116,93 @@ $doc->addScript(JURI::base(true).'/modules/mod_amadeus/js/app/app.js', 'text/jav
             </div>
         </div>
 
-        <div ng-if="openFilters" class="openFilters">
-            <div layout="row" layout-align="space-between center" class="mb-30 pl-10 pr-10" layout-wrap>
-                <div flex="auto" layout="row" class="pl-10 pr-10 pt-8" layout-align="start center" layout-wrap>
-                    <div class="white-fg z-index-10 h6">Fecha de salida *</div>
-                    <div>
-                        <md-datepicker md-min-date="minDate" 
-                            class="all-width"
-                            ng-model="data.startDate"  
-                            md-placeholder="--/--/----" 
-                            md-open-on-focus
-                            name="startDate" 
-                            required>
-                        </md-datepicker>
+        <div class="relative" layout="row" flex="100" layout-wrap>
+            <div ng-if="openFilters" class="openFilters">
+                <div layout="row" layout-align="space-between center" class="mb-30 pl-10 pr-10" layout-wrap>
+                    <div flex="auto" layout="row" class="pl-10 pr-10 pt-8" layout-align="start center" layout-wrap>
+                        <div class="white-fg z-index-10 h6">Fecha de salida *</div>
+                        <div>
+                            <md-datepicker md-min-date="minDate" 
+                                class="all-width"
+                                ng-model="data.startDate"  
+                                md-placeholder="--/--/----" 
+                                md-open-on-focus
+                                name="startDate" 
+                                required>
+                            </md-datepicker>
+                        </div>
+                    </div>
+
+                    <div flex="auto" ng-if="data.flightType == 'RoundTrip'" layout="row" class="pl-10 pr-10 pt-8" layout-align="start center" layout-wrap>
+                        <div class="white-fg z-index-10 h6">Fecha de regreso</div>
+                        <div>
+                            <md-datepicker md-min-date="data.startDate" 
+                                class="all-width"
+                                ng-disabled="!data.startDate" 
+                                ng-model="data.endDate" 
+                                md-placeholder="--/--/----" 
+                                md-open-on-focus
+                                name="endDate">
+                            </md-datepicker>
+                        </div>
                     </div>
                 </div>
 
-                <div flex="auto" ng-if="data.flightType == 'RoundTrip'" layout="row" class="pl-10 pr-10 pt-8" layout-align="start center" layout-wrap>
-                    <div class="white-fg z-index-10 h6">Fecha de regreso</div>
-                    <div>
-                        <md-datepicker md-min-date="data.startDate" 
-                            class="all-width"
-                            ng-disabled="!data.startDate" 
-                            ng-model="data.endDate" 
-                            md-placeholder="--/--/----" 
-                            md-open-on-focus
-                            name="endDate">
-                        </md-datepicker>
+                <div layout="row" layout-align="space-between center" class="pl-20 pr-20" layout-wrap>
+                    <div flex="auto" class="pb-10">
+                        <md-radio-group layout="row" ng-model="data.flightType" name="flightType" required>
+                            <md-radio-button value="RoundTrip" class="md-primary pr-8">Ida y vuelta</md-radio-button>
+                            <md-radio-button value="OneWay" class="md-primary pl-8" ng-click="data.endDate = null">Solo ida</md-radio-button>
+                        </md-radio-group>
+                    </div>
+                    
+                    <div flex="auto" class="pr-10">
+                        <md-input-container class="all-width">
+                            <label for="from" class="white-fg h5">Adultos</label>
+                            <md-select ng-model="data.adults">
+                                <md-option ng-repeat="passenger in passengers" ng-value="passenger" ng-disabled="$index === 0">
+                                    {{passenger}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+                    </div>
+
+                    <div flex="auto" class="pl-10 pr-10">
+                        <md-input-container class="all-width">
+                            <label for="from" class="white-fg h5">Niños (2-11)</label>
+                            <md-select ng-model="data.childs">
+                                <md-option ng-repeat="passenger in passengers" ng-value="passenger">
+                                    {{passenger}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+                    </div>
+
+                    <div flex="auto" class="pl-10">
+                        <md-input-container class="all-width">
+                            <label for="from" class="white-fg h5">Infantes (0-2)</label>
+                            <md-select ng-model="data.infants">
+                                <md-option ng-repeat="passenger in passengers" ng-value="passenger">
+                                    {{passenger}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
                     </div>
                 </div>
-            </div>
 
-            <div layout="row" layout-align="space-between center" class="pl-20 pr-20" layout-wrap>
-                <div flex="auto" class="pb-10">
-                    <md-radio-group layout="row" ng-model="data.flightType" name="flightType" required>
-                        <md-radio-button value="RoundTrip" class="md-primary pr-8">Ida y vuelta</md-radio-button>
-                        <md-radio-button value="OneWay" class="md-primary pl-8" ng-click="data.endDate = null">Solo ida</md-radio-button>
-                    </md-radio-group>
-                </div>
-                
-                <div flex="auto" class="pr-10">
-                    <md-input-container class="all-width">
-                        <label for="from" class="white-fg h5">Adultos</label>
-                        <md-select ng-model="data.adults">
-                            <md-option ng-repeat="passenger in passengers" ng-value="passenger" ng-disabled="$index === 0">
-                                {{passenger}}
-                            </md-option>
-                        </md-select>
-                    </md-input-container>
-                </div>
+                <div layout="row" layout-align="center center" class="m-15 relative">
+                    <md-button ng-click="search()" 
+                        class="md-raised orange-bg"
+                        ng-disabled="searchForm.$invalid || searchForm.$pristine || vm.loading">
+                        Buscar
+                    </md-button>
 
-                <div flex="auto" class="pl-10 pr-10">
-                    <md-input-container class="all-width">
-                        <label for="from" class="white-fg h5">Niños (2-11)</label>
-                        <md-select ng-model="data.childs">
-                            <md-option ng-repeat="passenger in passengers" ng-value="passenger">
-                                {{passenger}}
-                            </md-option>
-                        </md-select>
-                    </md-input-container>
-                </div>
-
-                <div flex="auto" class="pl-10">
-                    <md-input-container class="all-width">
-                        <label for="from" class="white-fg h5">Infantes (0-2)</label>
-                        <md-select ng-model="data.infants">
-                            <md-option ng-repeat="passenger in passengers" ng-value="passenger">
-                                {{passenger}}
-                            </md-option>
-                        </md-select>
-                    </md-input-container>
-                </div>
-            </div>
-
-            <div layout="row" layout-align="center center" class="m-15 relative">
-                <md-button ng-click="search()" 
-                    class="md-raised orange-bg"
-                    ng-disabled="searchForm.$invalid || searchForm.$pristine || vm.loading">
-                    Buscar
-                </md-button>
-
-                <div class="close-button p-15"
-                    ng-click="hideFilters()">
-                    <span class="cursor-pointer">
-                        &times;
-                    </span>
+                    <div class="close-button p-15"
+                        ng-click="hideFilters()">
+                        <span class="cursor-pointer">
+                            &times;
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>

@@ -26,10 +26,10 @@
 
 #amadeus-searcher .openFilters {
     position: absolute;
-    top: 166px;
+    top: 0px;
     width: 100%;
     left: 0px;
-    z-index: 99999999999999;
+    z-index: 1;
     background-color: rgba(0,0,0,0.8);
 }
 
